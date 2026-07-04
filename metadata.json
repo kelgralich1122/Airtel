@@ -1,0 +1,6 @@
+{
+  "name": "Airtel Wi-Fi Voucher System",
+  "description": "A Wi-Fi voucher generation and guest portal simulator optimized for Airtel ODU routers in Tanzania, featuring custom expiration, bandwidth limit management, and printable receipts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

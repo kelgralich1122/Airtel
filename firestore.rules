@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Vouchers collection rules
+    match /vouchers/{voucherId} {
+      // Allow reading and searching vouchers by anyone (for portal validation)
+      allow read, list: if true;
+      
+      // Allow guests to update voucher status to 'used' or increase 'usedDataMB'
+      allow update: if request.resource.data.diff(resource.data).affectedKeys()
+        .hasOnly(['status', 'activatedAt', 'expiresAt', 'usedDataMB', 'macAddress', 'deviceName']);
+        
+      // Only operators can create, delete, or perform full updates
+      allow create, delete, write: if request.auth != null;
+    }
+
+    // Settings collection rules
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write, update: if request.auth != null;
+    }
+
+    // Active sessions collection rules
+    match /sessions/{sessionId} {
+      allow read, write, update, delete: if true;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "airtel-mikrotik-bridge",
+  "version": "1.0.0",
+  "description": "Real-time bridge between Google Firestore and MikroTik RouterOS Hotspot",
+  "type": "module",
+  "main": "bridge.js",
+  "scripts": {
+    "start": "node bridge.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "firebase": "^10.11.0",
+    "node-routeros": "^2.1.3"
+  }
+}
